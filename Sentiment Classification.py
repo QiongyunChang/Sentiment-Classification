@@ -161,7 +161,7 @@ def train(input_data, model, criterion, optimizer):
     for i, data in enumerate(input_data, 0):
         if torch.cuda.is_available():
           input_ids, attention_mask, labels  = data[0].cuda(), data[1].cuda(), data[2].cuda()
- 
+  
         optimizer.zero_grad()
         out = model(input_ids,attention_mask)
         loss = criterion(out,labels)
