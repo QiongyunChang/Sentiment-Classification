@@ -173,9 +173,7 @@ def train(input_data, model, criterion, optimizer):
         total_count +=labels.size(0)
         acc_count += (predicted == labels).sum().item()
         loss_list.append(loss.item())
-        ########################################################################
-        #                           End of your code                           #
-        ########################################################################
+
 
     # Compute this epoch accuracy and loss
     acc = acc_count / total_count
@@ -203,14 +201,11 @@ def val(input_data, model, criterion):
     loss = sum(loss_list) / len(loss_list)
     return acc, loss
 
-################################################################################
-# You can adjust those hyper parameters to loop for max_epochs times           #
+
 ################################################################################
 max_epochs = 1
 log_interval = 1 # print acc and loss in per log_interval time
-################################################################################
-#                               End of your code                               #
-################################################################################
+
 train_acc_list = []
 train_loss_list = []
 val_acc_list = []
@@ -228,6 +223,7 @@ for epoch in range(1, max_epochs + 1):
         print('=' * 20, 'Epoch', epoch, '=' * 20)
         print('Train Acc: {:.6f} Train Loss: {:.6f}'.format(train_acc, train_loss))
         print('Val Acc: {:.6f}   Val Loss: {:.6f}'.format(val_acc, val_loss))
+################################################################################
 
 def predict(input_data, model):
     model.eval()
@@ -241,6 +237,7 @@ def predict(input_data, model):
     return output_list
 
 idx = 0
+################################################################################
 
 output_csv = predict(test_loader, model)
 with open('result.csv', 'w', newline='') as csvFile:
